@@ -72,7 +72,12 @@ android {
 
     //Needed because of this https://github.com/square/okio/issues/58
     lintOptions {
-        warning 'InvalidPackage'
+        warningsAsErrors true
+        abortOnError true // Fail early.
+
+        disable 'GoogleAppIndexingWarning' // App does not have deep linking.
+        disable 'InvalidPackage' // Okio references java.nio that does not presented in Android SDK.
+        disable 'BatteryLife' // SyncService$SyncOnConnectionAvailable uses deprecated API.
     }
 }
 
@@ -123,7 +128,7 @@ dependencies {
         transitive = true;
     }
 
-    compile 'com.jakewharton.timber:timber:4.4.0'
+    compile 'com.jakewharton.timber:timber:4.3.1'
     compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
     annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
 
