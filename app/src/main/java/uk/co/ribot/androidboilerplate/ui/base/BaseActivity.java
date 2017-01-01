@@ -19,6 +19,7 @@ import uk.co.ribot.androidboilerplate.injection.module.ActivityModule;
  * creation of Dagger components and makes sure that instances of ConfigPersistentComponent survive
  * across configuration changes.
  */
+@SuppressWarnings("Registered")
 public class BaseActivity extends AppCompatActivity {
 
     private static final String KEY_ACTIVITY_ID = "KEY_ACTIVITY_ID";
