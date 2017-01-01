@@ -14,21 +14,24 @@ android:
     - extra-android-support
     - extra-google-m2repository
     - extra-google-google_play_services
-    - sys-img-armeabi-v7a-android-18
+    - sys-img-armeabi-v7a-android-19
 
 before_install:
   - pip install --user codecov
 
 before_script:
-  - echo no | android create avd --force -n test -t android-18 --abi armeabi-v7a
+  - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
-  - adb shell input keyevent 82
+  - adb shell settings put global window_animation_scale 0 &
+  - adb shell settings put global transition_animation_scale 0 &
+  - adb shell settings put global animator_duration_scale 0 &
+  - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew clean
-  - ./gradlew build
-  - ./gradlew connectedAndroidTest -PdisablePreDex
+  - ./gradlew --no-daemon --info clean
+  - ./gradlew --no-daemon --info build -PdisablePreDex
+  - ./gradlew --no-daemon --info connectedAndroidTest -PdisablePreDex
 
 after_success:
   - codecov
@@ -36,6 +39,10 @@ after_success:
 after_failure:
   - echo $TRAVIS_BUILD_DIR
   - cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml
+
+env:
+  global:
+    - ADB_INSTALL_TIMEOUT=10
 
 cache:
   directories:

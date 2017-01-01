@@ -48,12 +48,6 @@
 -dontwarn okio.**
 -dontwarn com.squareup.okhttp.**
 
-# Otto rules
--keepclassmembers class ** {
-    @com.squareup.otto.Subscribe public *;
-    @com.squareup.otto.Produce public *;
-}
-
 # RxJava rules
 # RxAndroid will soon ship with rules so this may not be needed in the future
 # https://github.com/ReactiveX/RxAndroid/issues/219

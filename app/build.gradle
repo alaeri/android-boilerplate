@@ -52,11 +52,14 @@ android {
 
             ext.betaDistributionReleaseNotesFilePath =
                     file('../crashlytics_release_notes.txt').absolutePath
+
+            testCoverageEnabled true
         }
 
         debug {
             versionNameSuffix " Debug"
             debuggable true
+            testCoverageEnabled true
         }
     }
 
