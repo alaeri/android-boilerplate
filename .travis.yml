@@ -1,5 +1,5 @@
-# Disabling sudo moves build to the Container Based Infrastructure on Travis CI
-sudo: false
+# See https://github.com/travis-ci/travis-ci/issues/5582
+sudo: true
 
 language: android
 jdk: oraclejdk8
