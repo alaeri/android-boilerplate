@@ -104,6 +104,7 @@ dependencies {
     final AUTO_VALUE_VERSION = '1.3'
     final AUTO_VALUE_GSON_VERSION = '0.4.4'
     final AUTO_VALUE_PARCEL_VERSION = '0.2.5'
+    final STORIO = '1.12.1'
 
     def daggerCompiler = "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
     def jUnit = "junit:junit:4.12"
@@ -120,6 +121,11 @@ dependencies {
     compile ("com.squareup.sqlbrite:sqlbrite:1.1.0") {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
+
+    compile "com.pushtorefresh.storio:sqlite:$STORIO"
+    compile "com.pushtorefresh.storio:sqlite-annotations:$STORIO"
+    annotationProcessor "com.pushtorefresh.storio:sqlite-annotations-processor:$STORIO"
+
     compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
     compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
