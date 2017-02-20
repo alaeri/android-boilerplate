@@ -164,6 +164,7 @@ dependencies {
     androidTestCompile "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
     androidTestCompile "com.android.support.test:runner:$RUNNER_VERSION"
     androidTestCompile "com.android.support.test:rules:$RUNNER_VERSION"
+    androidTestCompile 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
 
     // Unit tests dependencies
     testCompile jUnit
